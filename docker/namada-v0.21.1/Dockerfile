@@ -1,5 +1,5 @@
-FROM rust:1.65.0-slim-buster AS namada-builder
-ARG BRANCH=v0.15.4
+FROM rust:1.71.1-slim-buster AS namada-builder
+ARG BRANCH=v0.21.1
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
@@ -31,8 +31,8 @@ RUN git clone -b $BRANCH --single-branch \
     && cd namada \
     && make build-release
 
-FROM rust:1.65.0-slim-buster AS namada-wasm-builder
-ARG BRANCH=v0.15.4
+FROM rust:1.71.1-slim-buster AS namada-wasm-builder
+ARG BRANCH=v0.21.1
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
